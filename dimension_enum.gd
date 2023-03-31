@@ -1,0 +1,3 @@
+extends Object
+
+enum DIMENSION {BLACK_DIMENSION, WHITE_DIMENSION}

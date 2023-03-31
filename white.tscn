@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cii3t3r51bvwu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1te48"]
+size = Vector2(854.25, 240)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cp5dn"]
+
+[node name="White" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Center L" type="Marker2D" parent="."]
+position = Vector2(0, 240)
+
+[node name="Center R" type="Marker2D" parent="."]
+position = Vector2(854, 240)
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(427, 240)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(427.125, 120)
+shape = SubResource("RectangleShape2D_1te48")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(427, 120)
+scale = Vector2(854.25, 240)
+texture = SubResource("CanvasTexture_cp5dn")
