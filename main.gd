@@ -1,7 +1,5 @@
 extends Node2D
 
-enum DIMENSION {BLACK_DIMENSION, WHITE_DIMENSION}
-
 var currentDimension = DIMENSION.BLACK_DIMENSION;
 
 # Called when the node enters the scene tree for the first time.
