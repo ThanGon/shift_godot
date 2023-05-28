@@ -1,6 +1,6 @@
 extends Node2D
 
-var currentDimension = DIMENSION.BLACK_DIMENSION;
+@onready var player = get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,16 +13,14 @@ func _process(_delta):
 		_shift_dimension()
 	
 func _shift_dimension(): 
-	if (currentDimension == DIMENSION.BLACK_DIMENSION) : 
+	if (DimensionBus.isWhiteCurrent()) : 
 		$White/StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
-		$"Player/Player Body".up_direction = Vector2.DOWN
-		$"Player/Player Body".JUMP_VELOCITY = 400 # GRAVITY IS PULLING DOWNWARD
 		$Black/StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
-		currentDimension = DIMENSION.WHITE_DIMENSION
+		DimensionBus.currentDimension = DIMENSION.BLACK_DIMENSION
+		player.emit_signal("shiftDimension")
 		
-	elif (currentDimension == DIMENSION.WHITE_DIMENSION) : 
+	else: 
 		$Black/StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
-		$"Player/Player Body".up_direction = Vector2.UP
-		$"Player/Player Body".JUMP_VELOCITY = -400 # GRAVITY IS PULLING DOWNWARD
 		$White/StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
-		currentDimension = DIMENSION.BLACK_DIMENSION
+		DimensionBus.currentDimension = DIMENSION.WHITE_DIMENSION
+		player.emit_signal("shiftDimension")

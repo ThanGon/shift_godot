@@ -1,19 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq1tuob5tt1lv"]
+[gd_scene load_steps=5 format=3 uid="uid://c7scmqrtwkjn3"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_j1abv"]
+[ext_resource type="Script" path="res://player_scene.gd" id="1_l05gd"]
+[ext_resource type="Script" path="res://player_body.gd" id="2_qiyd8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpylw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5i7m2"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_l05gd")
 
 [node name="Center Pos" type="Marker2D" parent="."]
 position = Vector2(427, 240)
 
 [node name="Player Body" type="CharacterBody2D" parent="."]
 position = Vector2(427, 240)
-script = ExtResource("1_j1abv")
+script = ExtResource("2_qiyd8")
 
 [node name="Player Collision" type="CollisionShape2D" parent="Player Body"]
 shape = SubResource("RectangleShape2D_cpylw")
@@ -23,3 +25,5 @@ modulate = Color(1, 0, 0, 1)
 position = Vector2(1.90735e-06, 1.90735e-06)
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_5i7m2")
+
+[connection signal="shiftDimension" from="." to="Player Body" method="_on_player_shift_dimension"]

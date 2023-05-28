@@ -5,18 +5,17 @@ const SPEED = 300.0
 @export
 var JUMP_VELOCITY = -400.0
 
-signal changeDimension()
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
 func _physics_process(delta):
-	
 	
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		if (DimensionBus.isWhiteCurrent()):
+			velocity.y += gravity * delta 
+		else: 
+			velocity.y += gravity * delta * -1
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -32,3 +31,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _on_player_shift_dimension():
+	if (DimensionBus.isWhiteCurrent()):
+		up_direction = Vector2.UP
+		JUMP_VELOCITY = JUMP_VELOCITY * -1
+	else: 
+		up_direction = Vector2.DOWN
+		JUMP_VELOCITY = JUMP_VELOCITY * -1
