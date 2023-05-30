@@ -14,4 +14,4 @@ script = ExtResource("1_43yeu")
 
 [node name="Player" parent="." instance=ExtResource("3_fn0mx")]
 
-[connection signal="shiftDimension" from="Player" to="." method="_on_player_shift_dimension"]
+[node name="Player Mirror" parent="." instance=ExtResource("3_fn0mx")]
