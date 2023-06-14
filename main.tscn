@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://chi7wg10nhgqy"]
+[gd_scene load_steps=6 format=3 uid="uid://chi7wg10nhgqy"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_43yeu"]
 [ext_resource type="PackedScene" uid="uid://c3d5cimkeh8no" path="res://black.tscn" id="1_ykmdp"]
 [ext_resource type="PackedScene" uid="uid://cii3t3r51bvwu" path="res://white.tscn" id="2_rbqg4"]
-[ext_resource type="PackedScene" uid="uid://c7scmqrtwkjn3" path="res://player.tscn" id="3_fn0mx"]
+[ext_resource type="PackedScene" uid="uid://d057jbq2d5pam" path="res://player_white.tscn" id="4_jls3e"]
+[ext_resource type="PackedScene" uid="uid://uly6bp3hre52" path="res://player_black.tscn" id="5_p4pg1"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_43yeu")
@@ -12,6 +13,6 @@ script = ExtResource("1_43yeu")
 
 [node name="White" parent="." instance=ExtResource("2_rbqg4")]
 
-[node name="Player" parent="." instance=ExtResource("3_fn0mx")]
+[node name="Player White" parent="." instance=ExtResource("4_jls3e")]
 
-[node name="Player Mirror" parent="." instance=ExtResource("3_fn0mx")]
+[node name="Player Black" parent="." instance=ExtResource("5_p4pg1")]

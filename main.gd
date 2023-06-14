@@ -1,6 +1,9 @@
 extends Node2D
 
-@onready var player = get_node("Player")
+@onready var playerWhite = get_node("Player White")
+@onready var playerBlack = get_node("Player Black")
+@onready var whiteStage = get_node("White")
+@onready var blackStage = get_node("Black")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,13 +17,19 @@ func _process(_delta):
 	
 func _shift_dimension(): 
 	if (DimensionBus.isWhiteCurrent()) : 
-		$White/StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
-		$Black/StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
+#		$White/StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
+#		$Black/StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 		DimensionBus.currentDimension = DIMENSION.BLACK_DIMENSION
-		player.emit_signal("shiftDimension")
+		whiteStage.emit_signal("shiftDimension")
+		blackStage.emit_signal("shiftDimension")
+		playerWhite.emit_signal("shiftDimension")
+		playerBlack.emit_signal("shiftDimension")
 		
 	else: 
-		$Black/StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
-		$White/StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
+#		$Black/StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
+#		$White/StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 		DimensionBus.currentDimension = DIMENSION.WHITE_DIMENSION
-		player.emit_signal("shiftDimension")
+		whiteStage.emit_signal("shiftDimension")
+		blackStage.emit_signal("shiftDimension")
+		playerWhite.emit_signal("shiftDimension")
+		playerBlack.emit_signal("shiftDimension")

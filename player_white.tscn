@@ -1,21 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7scmqrtwkjn3"]
+[gd_scene load_steps=5 format=3 uid="uid://d057jbq2d5pam"]
 
-[ext_resource type="Script" path="res://player_scene.gd" id="1_l05gd"]
-[ext_resource type="Script" path="res://player_body.gd" id="2_qiyd8"]
+[ext_resource type="Script" path="res://player_scene.gd" id="1_e58nv"]
+[ext_resource type="Script" path="res://player_body_white.gd" id="2_mfnyk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpylw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5i7m2"]
 
-[node name="Player" type="Node2D"]
-script = ExtResource("1_l05gd")
+[node name="Player White" type="Node2D"]
+script = ExtResource("1_e58nv")
 
 [node name="Center Pos" type="Marker2D" parent="."]
 position = Vector2(427, 240)
 
 [node name="Player Body" type="CharacterBody2D" parent="."]
 position = Vector2(427, 240)
-script = ExtResource("2_qiyd8")
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_mfnyk")
 
 [node name="Player Collision" type="CollisionShape2D" parent="Player Body"]
 shape = SubResource("RectangleShape2D_cpylw")
@@ -26,4 +28,4 @@ position = Vector2(1.90735e-06, 1.90735e-06)
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_5i7m2")
 
-[connection signal="shiftDimension" from="." to="Player Body" method="_on_player_shift_dimension"]
+[connection signal="shiftDimension" from="." to="Player Body" method="_on_player_white_shift_dimension"]
